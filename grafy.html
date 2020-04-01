@@ -1,0 +1,61 @@
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+
+        function vykresliGraf() {
+            let data = new google.visualization.DataTable();
+            data.addColumn('string', 'Rok'); //osa X
+            data.addColumn('number', 'Odbyt'); //osa Y 1. rada
+            data.addColumn('number', 'Výdaje'); //osa Y 2. rada
+
+            let rows = new Array();
+            let row;
+            row = []; //dalsi body se stejnou hodnotou osy X
+            row[0] = '2004'; //osa X
+            row[1] = 1000; //osa Y 1. rada
+            row[2] = 400; //osa Y 2. rada
+            rows.push(row);
+            row = []; //dalsi body se stejnou hodnotou osy X
+            row[0] = '2005';
+            row[1] = 1170;
+            row[2] = 460;
+            rows.push(row);
+            row = []; //dalsi body se stejnou hodnotou osy X
+            row[0] = '2006';
+            row[1] = 660;
+            row[2] = 1120;
+            rows.push(row);
+            row = []; //dalsi body se stejnou hodnotou osy X
+            row[0] = '2007';
+            row[1] = 1030;
+            row[2] = 540;
+            rows.push(row);
+
+            data.addRows(rows);
+
+            let options = {
+                title: 'Výkonnost firmy',
+                curveType: 'function',
+                legend: { position: 'bottom' },
+                animation: { //animace grafu po zobrazeni
+                    startup: true,
+                    duration: 500
+                }
+            };
+
+            let chart = new google.visualization.LineChart(document.getElementById('div_graf'));
+
+            chart.draw(data, options);
+        }
+        function poSpusteni() {
+            vykresliGraf();
+        }
+    </script>
+</head>
+<body onload="poSpusteni()">
+<div id="div_graf" style="width: 900px; height: 500px"></div>
+</body>
+</html>
