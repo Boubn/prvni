@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>úkol 8.4 Rechcígl</title>
+
+    <script>
+        const HOST = window.location.protocol + "//" + window.location.hostname + ((window.location.port) ? ":" + window.location.port : "") + window.location.pathname;
+ function volanisluzby() {
+    let url = HOST+"datumy.php";
+    fetch(url).then(function(response) {
+        response.text().then(function(text) {
+            let obj = JSON.parse(text);
+            document.getElementById("vystup").innerHTML = ("Dnes je ")+obj.DenVTydnu+" " +obj.datum+(" svátek má ") + obj.svatek ;
+        });
+    });
+}
+</script>
+
+
+</head>
+<body onload="volaniSluzby()">
+
+
+<div id="vystup">...</div>
+</body>
+</html>
